@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -22,6 +23,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 
 
     @Override
@@ -47,14 +49,36 @@ public class Main extends Application {
         StackPane teineleht = new StackPane();
         teineleht.getChildren().addAll(nupp2);
         stseen2 = new Scene(teineleht, 600, 300);
-        //avaStseen();
+        avaStseen();
        // küsiKasutajalt();//
 
 
 
     }
 
+    public void avaStseen() {
+        double a = 5.0/2.0;
+        System.out.println(a);
+
     }
+
+    public void teineKlass(Programm peenra_laius) {
+
+        
+
+    }
+
+    {
+
+
+    }
+
+
+    }
+
+
+
+
 
 
 

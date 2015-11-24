@@ -1,0 +1,11 @@
+
+Peenra_arv (PEENRA_ARV <= 30)
+RIDADE_ARV  ( <=  10 && < PEENRA_ARV)
+
+
+
+PÕLLU_PIKKUS X
+PÕLLU_LAIUS Y
+
+PÕLLU LAIUS / ridade arv
+
