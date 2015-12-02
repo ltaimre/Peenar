@@ -49,32 +49,22 @@ public class Main extends Application {
         StackPane teineleht = new StackPane();
         teineleht.getChildren().addAll(nupp2);
         stseen2 = new Scene(teineleht, 600, 300);
-        avaStseen();
        // küsiKasutajalt();//
 
 
-
+        kasPeenartöötab();
     }
 
-    public void avaStseen() {
-        double a = 5.0/2.0;
-        System.out.println(a);
+    public void kasPeenartöötab () {
+        Peenar esimeneP = new Peenar(2, 3, true, "porgand");
+
+        System.out.println(esimeneP.kasOnHaritud());
+        System.out.println("niisama prindid?");
 
     }
-
-    public void teineKlass(Programm peenra_laius) {
-
-        
-
-    }
-
-    {
+}
 
 
-    }
-
-
-    }
 
 
 
