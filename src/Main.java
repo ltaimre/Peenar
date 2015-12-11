@@ -53,8 +53,10 @@ public class Main extends Application {
 
 
         kasPeenartöötab();
+
     }
 
+    public void mituOnreas()
     public void kasPeenartöötab () {
         Peenar esimeneP = new Peenar(2, 3, true, "porgand");
 
@@ -62,6 +64,8 @@ public class Main extends Application {
         System.out.println("niisama prindid?");
 
     }
+
+
 }
 
 

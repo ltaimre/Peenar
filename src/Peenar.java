@@ -9,6 +9,7 @@ public class Peenar {
     //asukoht
 
     public Peenar(double pPikkus, double pLaius, boolean algseis, String sisu){
+        pikkus = joonista
     pikkus = pPikkus;
     laius = pLaius;
         haritus = algseis;
