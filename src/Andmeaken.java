@@ -56,7 +56,7 @@ public class Andmeaken {
         /*nupp, mis genereerib peenra */
         Button olulineNupp = new Button("Hakka pihta");
         olulineNupp.setOnAction(event -> {
-            Põld.korja_andmed(peenardeArv);
+            Põld.korja_andmed(peenardeArv, ridadeArv);
             //String sisestusväli1 = peenardeArv.getText();
             //String sisestusväli2= ridadeArv.getText();
             //System.out.println(sisestusväli1);
