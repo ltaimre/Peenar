@@ -1,39 +1,32 @@
+import javafx.scene.shape.Rectangle;
+
 /**
  * Created by liisi on 26.11.2015.
  */
 public class Peenar {
-    private double pikkus;
-    private double laius;
-    private boolean haritus;
-    private String sisu;
+
+
+
+    public static void joonista_peenar(int [] andmed) {
+        int peenra_Arv = andmed [0];
+        int ridade_Arv = andmed [1];
+        int PÕLLU_PIKKUS = 800;
+        int PÕLLU_LAIUS = 600;
+        int peenra_Arv_Reas = peenra_Arv/ridade_Arv;
+        int peenra_pikkus = PÕLLU_PIKKUS/peenra_Arv_Reas;
+        int peenra_laius =  PÕLLU_LAIUS/peenra_Arv;
+
+
+
+        String katse = "Ma olen peenar pikkusega " + peenra_pikkus +  " px ja laiusega " +
+                peenra_laius + " px ja mind on ühes reas " + peenra_Arv_Reas + " tükki.";
+
+        System.out.println(katse);
 
 
     //asukoht
 
-    public Peenar(double pPikkus, double pLaius, boolean algseis, String sisu){
-    pikkus = pPikkus;
-    laius = pLaius;
-        haritus = algseis;
-        sisu = "tühi";
-    }
-
-    public String kasOnHaritud() {
-        String a = "Siin juba kasvab";
-        if (haritus == true) {
-            a = a;
-        }
-        else {
-            a = "Istuta midagi";
-        }
-        return a;
-
-    }
-
-    public String misKasvab() {
-        System.out.println("prindi midagigi");
-        System.out.println(sisu);
-        return sisu;
-    }
 
 
+}
 }

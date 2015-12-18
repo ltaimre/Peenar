@@ -3,6 +3,7 @@
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -28,18 +29,25 @@ public class Peaaken {
 
         GridPane peenraruudustik = new GridPane();
         Label silt = new Label("katsesilt");
-       // Rectangle ruut = new Rectangle(20, 20, 70, 50);
-        GridPane.setConstraints(silt, 3, 3);
-        peenraruudustik.getChildren().addAll( silt);
+        //Rectangle peenar = new Rectangle(50, 50, Color.BLUE);
+        Rectangle peenar2 = new Rectangle(50, 50, Color.BLUE);
+        //peenraruudustik.add(peenar, 0, 1);
+        //peenraruudustik.add(peenar2, 1, 2);
 
 
 
-       /* for (int i = 0; i < 4; i++) {
+      for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                peenraruudustik.add(ruut, i, j);
+                Rectangle peenar = new Rectangle(50, 50, Color.BLUE);
+                peenar.setStroke(Color.RED);
+                peenar.setStrokeWidth(10);
+                peenar.setOnMouseClicked(event -> {
+                    System.out.println("Saab kasvama panna");
+                });
+                peenraruudustik.add(peenar, i, j);
 
             }
-        } */
+        }
 
 
        stseen3 = new Scene(peenraruudustik,500,500);

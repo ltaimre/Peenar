@@ -24,7 +24,7 @@ public class Põld {
         } catch (Exception e) {
             System.out.println("Nii peenarde kui ridade arv võiks ikka number olla!");
         } finally {
-            joonista_peenar(peenraandmed);
+            Peenar.joonista_peenar(peenraandmed);
             return peenraandmed;
         }
 
@@ -32,7 +32,7 @@ public class Põld {
     }
 
 
-    public static void joonista_peenar(int [] andmed) {
+    /*  public static void joonista_peenar(int [] andmed) {
         int peenra_Arv = andmed [0]; //tegelt tuleb sisend kasutajalt, praegu lihtsalt katsetuseks
         int ridade_Arv = andmed [1];//tegelt tuleb sisend kasutajalt, praegu lihtsalt katsetuseks
         int PÕLLU_PIKKUS = 800;
@@ -46,7 +46,7 @@ public class Põld {
         String katse = "Ma olen peenar pikkusega " + peenra_pikkus +  " px ja laiusega " +
                 peenra_laius + " px ja mind on ühes reas " + peenra_Arv_Reas + " tükki.";
 
-        System.out.println(katse);
+        System.out.println(katse); */
 
 
 
@@ -58,4 +58,4 @@ public class Põld {
 
 
 
-}
+

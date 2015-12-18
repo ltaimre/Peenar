@@ -3,9 +3,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 
@@ -28,9 +27,12 @@ public class Andmeaken {
     public void avaaken()  {
         System.out.println("AVAAKEN");
         programm.setTitle("Minu põld");
+        Image p6llupilt = new Image("/p6ld.jpg");
 
         /* Esimesel aknal olevad elemendid */
         Label tervitustekst = new Label("Teretulemast!");
+        BackgroundImage taustapilt = new BackgroundImage (p6llupilt, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
         Label rida1 = new Label("Sisesta peenarde arv");
         Label rida2 = new Label("Sisesta ridade arv");
 
@@ -76,7 +78,8 @@ public class Andmeaken {
 
         /*lisan elemendid esimesele aknale */
         VBox avaleht = new VBox();
-        avaleht.getChildren().addAll(tervitustekst, rida1, peenardeArv, rida2, ridadeArv, olulineNupp, nupp);
+        avaleht.setBackground(new Background(taustapilt));
+        avaleht.getChildren().addAll(tervitustekst, rida1, peenardeArv, rida2, ridadeArv, olulineNupp);
 
 
 
@@ -88,7 +91,7 @@ public class Andmeaken {
 
 
         /*Esimese akna parameetrid */
-        stseen1 = new Scene(avaleht, 500,500);
+        stseen1 = new Scene(avaleht, 500, 500);
         programm.setScene(stseen1);
         programm.show();
 
