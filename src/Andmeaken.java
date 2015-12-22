@@ -14,7 +14,7 @@ import javafx.stage.Stage;
  */
 public class Andmeaken {
     Stage programm = new Stage();
-    Scene stseen1, stseen2;
+    Scene stseen1, stseen2, uusstseen;
 
     Andmeaken () {
         System.out.println("ANDMEAKEN");
@@ -27,12 +27,12 @@ public class Andmeaken {
     public void avaaken()  {
         System.out.println("AVAAKEN");
         programm.setTitle("Minu põld");
-        Image p6llupilt = new Image("/p6ld.jpg");
+        //Image p6llupilt = new Image("/p6ld.jpg");
 
         /* Esimesel aknal olevad elemendid */
         Label tervitustekst = new Label("Teretulemast!");
-        BackgroundImage taustapilt = new BackgroundImage (p6llupilt, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-                BackgroundSize.DEFAULT);
+       // BackgroundImage taustapilt = new BackgroundImage (p6llupilt, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+               // BackgroundSize.DEFAULT);
         Label rida1 = new Label("Sisesta peenarde arv");
         Label rida2 = new Label("Sisesta ridade arv");
 
@@ -55,7 +55,7 @@ public class Andmeaken {
         //int peenrad = Integer.parseInt(ridadeArv.getText());
 
 
-        /*nupp, mis genereerib peenra */
+        /*nupp, mis genereerib peenra  */
         Button olulineNupp = new Button("Hakka pihta");
         olulineNupp.setOnAction(event -> {
             Põld.korja_andmed(peenardeArv, ridadeArv);
@@ -70,22 +70,36 @@ public class Andmeaken {
 
 
 
-         /*nupp, mis avab uue akna*/
-        Button nupp = new Button("Teineaken");
-        nupp.setOnAction(event -> TeeValik.display("Pealisaken", "Sain hakkama?"));
 
+
+        /*nupp, mis avab uue akna */
+        Button nupp = new Button("Teineaken");
+        //nupp.setOnAction(event -> TeeValik.display("Pealisaken", "Sain hakkama?"));
+       // nupp.setOnAction(event1 -> Peenraaken.näitapeenraid());
+
+        nupp.setOnAction(event1 -> new Peaaken());
+
+
+        Button nupp2 = new Button("Vaheta akent");
+      //  nupp2.setOnAction(event1 -> programm.setScene(uusstseen));
 
 
         /*lisan elemendid esimesele aknale */
         VBox avaleht = new VBox();
-        avaleht.setBackground(new Background(taustapilt));
-        avaleht.getChildren().addAll(tervitustekst, rida1, peenardeArv, rida2, ridadeArv, olulineNupp);
+       // avaleht.setBackground(new Background(taustapilt));
+        avaleht.getChildren().addAll(tervitustekst, rida1, peenardeArv, rida2, ridadeArv,  nupp, olulineNupp );
 
 
 
         /*Teise akna elemendid*/
-        Button nupp2 = new Button("Tagasi avalehele");
-        nupp2.setOnAction(event -> programm.setScene(stseen1));
+        Button nupp3 = new Button("Tagasi avalehele");
+        nupp3.setOnAction(event -> programm.setScene(stseen1));
+
+        // kolmanda aknda elemendid
+        VBox kolmasaken = new VBox();
+        Label jee = new Label("Ma vahetasin stseeni");
+        kolmasaken.getChildren().add(jee);
+
 
 
 
@@ -101,14 +115,19 @@ public class Andmeaken {
         teineleht.getChildren().addAll(nupp2);
         stseen2 = new Scene(teineleht, 600, 300);
 
-
-
-
-    }
-
-
+        //Kolmas aken
+        uusstseen = new Scene(kolmasaken, 500, 500);
 
 
 
 
+
+
+
+
+
+
+
+
+}
 }

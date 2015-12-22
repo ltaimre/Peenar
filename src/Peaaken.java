@@ -20,12 +20,17 @@ public class Peaaken {
 
     Peaaken () {
         System.out.println("PEAAKEN");
-        joonistapeenraid();
+        double[] katsetuseks = new double[2];
+        katsetuseks[0] = 20.0;
+        katsetuseks[1] = 30.0;
+        joonistapeenraid(katsetuseks);
 
     }
 
 
-    public void joonistapeenraid(){
+    public void joonistapeenraid(double[] parameetrid){
+        double laius = parameetrid[0];
+        double pikkus = parameetrid[1];
 
         GridPane peenraruudustik = new GridPane();
         Label silt = new Label("katsesilt");
@@ -38,7 +43,7 @@ public class Peaaken {
 
       for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                Rectangle peenar = new Rectangle(50, 50, Color.BLUE);
+                Rectangle peenar = new Rectangle(laius, pikkus, Color.BLUE);
                 peenar.setStroke(Color.RED);
                 peenar.setStrokeWidth(10);
                 peenar.setOnMouseClicked(event -> {

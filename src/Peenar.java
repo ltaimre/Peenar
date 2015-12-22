@@ -7,7 +7,7 @@ public class Peenar {
 
 
 
-    public static void joonista_peenar(int [] andmed) {
+    public static double[] joonista_peenar(int [] andmed) {
         int peenra_Arv = andmed [0];
         int ridade_Arv = andmed [1];
         int PÕLLU_PIKKUS = 800;
@@ -15,6 +15,10 @@ public class Peenar {
         int peenra_Arv_Reas = peenra_Arv/ridade_Arv;
         int peenra_pikkus = PÕLLU_PIKKUS/peenra_Arv_Reas;
         int peenra_laius =  PÕLLU_LAIUS/peenra_Arv;
+        double[] peenraparameetrid = new double[2];
+        peenraparameetrid[0] = peenra_laius * 1.0;
+        peenraparameetrid[1] = peenra_pikkus * 1.0;
+
 
 
 
@@ -22,6 +26,7 @@ public class Peenar {
                 peenra_laius + " px ja mind on ühes reas " + peenra_Arv_Reas + " tükki.";
 
         System.out.println(katse);
+        return peenraparameetrid;
 
 
     //asukoht

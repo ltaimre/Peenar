@@ -30,8 +30,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         System.out.println("START");
-       //new Andmeaken();
-        new Peaaken();
+       new Andmeaken();
+        // new Peaaken();
 
 
     }
