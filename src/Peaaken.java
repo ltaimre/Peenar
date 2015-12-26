@@ -3,6 +3,7 @@
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -15,18 +16,15 @@ import java.security.PublicKey;
  */
 public class Peaaken {
 
-    Stage programm2 = new Stage();
-    Scene stseen3;
+    Scene põlluvaade;
 
-    Peaaken () {
-        System.out.println("PEAAKEN");
-        double[] katsetuseks = new double[2];
-        katsetuseks[0] = 20.0;
-        katsetuseks[1] = 30.0;
-        joonistapeenraid(katsetuseks);
 
+    public void vahetaakent() {
+        VBox katsetan = new VBox();
+        Label proov = new Label("test");
+        põlluvaade = new Scene(katsetan, 500, 500);
+        programm.setScene(põlluvaade);
     }
-
 
     public void joonistapeenraid(double[] parameetrid){
         double laius = parameetrid[0];
@@ -34,12 +32,6 @@ public class Peaaken {
 
         GridPane peenraruudustik = new GridPane();
         Label silt = new Label("katsesilt");
-        //Rectangle peenar = new Rectangle(50, 50, Color.BLUE);
-        Rectangle peenar2 = new Rectangle(50, 50, Color.BLUE);
-        //peenraruudustik.add(peenar, 0, 1);
-        //peenraruudustik.add(peenar2, 1, 2);
-
-
 
       for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
@@ -54,10 +46,6 @@ public class Peaaken {
             }
         }
 
-
-       stseen3 = new Scene(peenraruudustik,500,500);
-       programm2.setScene(stseen3);
-       programm2.show();
 
 
 
