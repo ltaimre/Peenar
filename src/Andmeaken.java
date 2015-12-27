@@ -1,5 +1,6 @@
 
 
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,12 +12,11 @@ public class Andmeaken {
     Stage programm = new Stage();
     Scene küsiandmeid;
 
-    Andmeaken () {
+    Andmeaken() {
         avaaken();
     }
 
-
-    public void avaaken()  {
+    private void avaaken()  {
         programm.setTitle("Peenraplaneerija");
 
         //lisatekstid
@@ -30,23 +30,23 @@ public class Andmeaken {
         //nupp
         Button korjaAndmed = new Button("Hakka pihta");
         korjaAndmed.setOnAction(event -> {
-            Andmehaldur.korja_andmed(peenardeArv, ridadeArv);
+            int[] a = Andmehaldur.korja_andmed(peenardeArv, ridadeArv);
+            new Põld(a);
         });
 
-        //ajutine nupp stseenivahetuseks
-        Button abiNupp = new Button("Hakka joonisama!");
-        abiNupp.setOnAction(event -> new Andmeaken.Peaaken());
 
         //kujundus
         VBox avaleht = new VBox();
-        avaleht.getChildren().addAll(sisestapeenrad, peenardeArv, sisestaread, ridadeArv, korjaAndmed, abiNupp );
+        avaleht.getChildren().addAll(sisestapeenrad, peenardeArv, sisestaread, ridadeArv, korjaAndmed);
 
         //seadista esimene vaade ja ava programm
-        küsiandmeid = new Scene(avaleht, 500, 500);
+        küsiandmeid = new Scene(avaleht, 1000, 600);
         programm.setScene(küsiandmeid);
         programm.show();
 
-        //teine vaade
+
+
+
 
 
 
