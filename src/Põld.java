@@ -1,8 +1,12 @@
 import com.sun.org.apache.xpath.internal.operations.And;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -12,6 +16,8 @@ import java.util.Arrays;
 
 /**
  * Created by Ülle on 27.12.2015.
+ * http://blog.ngopal.com.np/2011/07/04/autofill-textbox-with-filtermode-in-javafx-2-0-custom-control/
+ *
  */
 public class Põld {
 
@@ -44,8 +50,8 @@ public class Põld {
         for (int i = 0; i < peenradreas; i++) {
             for (int j = 0; j < read; j++) {
                 Rectangle peenar = new Rectangle(laius, pikkus, Color.BLUE);
-                Button külva = new Button("Mida külvame?");
-                külva.setAlignment(Pos.BOTTOM_CENTER);
+                TextField panekasvama = new TextField("Voot?");
+                panekasvama.setAlignment(Pos.BOTTOM_CENTER);
                 peenar.setStroke(Color.RED);
                 peenar.setStrokeWidth(10);
                 peenar.setOnMouseClicked(event -> {
@@ -56,7 +62,7 @@ public class Põld {
 
                 });
                 peenraruudustik.add(peenar, i, j);
-                peenraruudustik.add(külva, i, j);
+                peenraruudustik.add(panekasvama, i, j);
             }
         }
 
