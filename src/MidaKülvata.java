@@ -38,14 +38,6 @@ public class MidaKülvata {
             data.add(s[j]);
         }
 
-        File f = new File("juurviljad.txt");
-        BufferedReader br = new BufferedReader(new FileReader(f));
-        String line = br.readLine();
-        while (line != null) {
-            System.out.println(line);
-            line = br.readLine();
-        }
-        br.close();
 
         HBox külva = new HBox();
         külva.setSpacing(10);

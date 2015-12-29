@@ -1,22 +1,24 @@
-
-
-
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.*;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Andmeaken {
+/**
+ * Created by liisi on 29.12.2015.
+ */
+public class AvaLeht {
     Stage programm = new Stage();
     Scene küsiandmeid;
 
-    Andmeaken() {
-        avaaken();
+    AvaLeht() {
+        avaAken();
     }
 
-    private void avaaken()  {
+
+    private void avaAken()  {
         programm.setTitle("Peenraplaneerija");
 
         //lisatekstid
@@ -30,8 +32,9 @@ public class Andmeaken {
         //nupp
         Button korjaAndmed = new Button("Hakka pihta");
         korjaAndmed.setOnAction(event -> {
-            int[] a = Andmehaldur.korja_andmed(peenardeArv, ridadeArv);
+            int[] a = AndmeKonvertija.korja_andmed(peenardeArv, ridadeArv);
             new Põld(a);
+            programm.close();
         });
 
 
@@ -44,20 +47,7 @@ public class Andmeaken {
         programm.setScene(küsiandmeid);
         programm.show();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 }
-}
+
+
