@@ -37,7 +37,6 @@ public class AvaLeht {
             programm.close();
         });
 
-
         //kujundus
         VBox avaleht = new VBox();
         avaleht.getChildren().addAll(sisestapeenrad, peenardeArv, sisestaread, ridadeArv, korjaAndmed);
