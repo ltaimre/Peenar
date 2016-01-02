@@ -2,6 +2,12 @@ import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by liisi on 29.12.2015.
  */
@@ -35,6 +41,20 @@ public class AndmeKonvertija {
         asukohaindeks[1]= ruudustik.getColumnIndex(element);
         return asukohaindeks;
     }
+
+    public static List<String> loefailist(String failinimi) throws Exception {
+        List<String> nimekiri = new ArrayList<>();
+        File minufail = new File(failinimi);
+        BufferedReader lugeja = new BufferedReader(new FileReader(minufail));
+        String rida = lugeja.readLine();
+        while (rida != null) {
+            rida = lugeja.readLine();
+            nimekiri.add(rida);
+        }
+        lugeja.close();
+        return nimekiri;
+    }
+
 }
 
 

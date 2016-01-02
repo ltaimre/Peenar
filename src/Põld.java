@@ -9,6 +9,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -21,14 +22,14 @@ import java.util.Arrays;
 public class Põld {
 
     Stage põllumaa = new Stage();
-    Scene peenravaade;
+    Scene peenravaade, jalus;
 
     //põllu konstantsed mõõdud
     double PIIRDELAIUS = 5;
     double PÕLLU_PIKKUS = 500;
     double PÕLLU_LAIUS = 1000;
 
-    Põld(int[]a) {
+    Põld(int[]a) throws Exception {
         if (a[2] == 1) { // sisend a on vajalik selleks, et programm käivituks vaid siis kui andmed on korrektsed
         double [] mõõdud = arvutamõõdud(a);
         Scene põllujoonis = joonistapõld(mõõdud);
@@ -41,8 +42,14 @@ public class Põld {
 
     }
 
+    private void loojalus() {
+        HBox alumisednupud = new HBox();
+        Button salvesta = new Button();
+
+    }
+
     //joonistab peenraruudustiku
-    private Scene joonistapõld(double[] parameetrid) {
+    private Scene joonistapõld(double[] parameetrid) throws Exception {
         double laius = parameetrid[0];
         double pikkus = parameetrid[1];
         int read = (int) parameetrid[2];
@@ -50,35 +57,22 @@ public class Põld {
         int viimanerida = (int)parameetrid[4];
 
         GridPane peenraruudustik = new GridPane();
+        Label nupp = new Label("Kliki ja külva!");
+        nupp.setTextAlignment(TextAlignment.CENTER);
+        nupp.setAlignment(Pos.CENTER);
 
 
 
         for (int i = 0; i < peenradreas; i++) {
             for (int j = 0; j < (read-1); j++) {
-                /* Rectangle peenar = new Rectangle(laius, pikkus, Color.BLUE);
-                TextField panekasvama = new TextField("Voot?");
-                panekasvama.setAlignment(Pos.BOTTOM_CENTER);
-                peenar.setStroke(Color.RED);
-                peenar.setStrokeWidth(PIIRDELAIUS);
-                peenar.setOnMouseClicked(event -> {
-                    peenar.setStroke(Color.BLACK);
-                    new MidaKülvata();
-                    System.out.println("Saab kasvama panna");
-                    System.out.println(Arrays.toString(AndmeKonvertija.asukohaandmed(peenraruudustik, peenar)));
-
-                });
-                */
                 peenraruudustik.add(Peenar.looPeenar(parameetrid), i, j);
-                Label nupp = new Label("Kliki ja külva!");
-                nupp.setTextAlignment(TextAlignment.CENTER);
-                nupp.setAlignment(Pos.CENTER);
-                peenraruudustik.add(nupp, i, j);
-
+               // peenraruudustik.add(nupp, i, j);
             }
         }
 
         for (int i = 0; i <viimanerida; i++) {
                 peenraruudustik.add(Peenar.looPeenar(parameetrid), i , read);
+              //  peenraruudustik.add(nupp, i, read);
             }
 
         peenravaade = new Scene(peenraruudustik, 1005, 600);
@@ -105,4 +99,6 @@ public class Põld {
 
         return peenramõõdud;
     }
+
+
 }

@@ -33,7 +33,11 @@ public class AvaLeht {
         Button korjaAndmed = new Button("Hakka pihta");
         korjaAndmed.setOnAction(event -> {
             int[] a = AndmeKonvertija.korja_andmed(peenardeArv, ridadeArv);
-            new Põld(a);
+            try {
+                new Põld(a);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             programm.close();
         });
 
