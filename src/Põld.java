@@ -29,6 +29,17 @@ public class Põld {
     double PÕLLU_PIKKUS = 500;
     double PÕLLU_LAIUS = 1000;
 
+    public static Rectangle looPeenar(double[] parameetrid) throws Exception {
+        double laius = parameetrid[0];
+        double pikkus = parameetrid[1];
+
+        Rectangle peenar = new Rectangle(laius, pikkus, Color.SANDYBROWN);
+        peenar.setStroke(Color.DARKGREEN);
+        peenar.setStrokeWidth(5);
+
+        return peenar;
+    }
+
     Põld(int[]a) throws Exception {
         if (a[2] == 1) { // sisend a on vajalik selleks, et programm käivituks vaid siis kui andmed on korrektsed
         double [] mõõdud = arvutamõõdud(a);
@@ -45,6 +56,7 @@ public class Põld {
     private void loojalus() {
         HBox alumisednupud = new HBox();
         Button salvesta = new Button();
+        alumisednupud.getChildren().addAll(salvesta);
 
     }
 
@@ -57,21 +69,44 @@ public class Põld {
         int viimanerida = (int)parameetrid[4];
 
         GridPane peenraruudustik = new GridPane();
-        Label nupp = new Label("Kliki ja külva!");
-        nupp.setTextAlignment(TextAlignment.CENTER);
-        nupp.setAlignment(Pos.CENTER);
-
-
 
         for (int i = 0; i < peenradreas; i++) {
             for (int j = 0; j < (read-1); j++) {
-                peenraruudustik.add(Peenar.looPeenar(parameetrid), i, j);
+                Label nupp = new Label("Kliki ja külva!");
+                nupp.setTextAlignment(TextAlignment.CENTER);
+                nupp.setAlignment(Pos.CENTER);
+                Rectangle peenraruut = looPeenar(parameetrid);
+                StackPane proovinruutu = new StackPane(peenraruut, nupp);
+                peenraruut.setOnMouseClicked(event -> {
+                    peenraruut.setFill(Color.LAWNGREEN);
+                    try {
+                        System.out.println("Tahan printida");
+                        new MidaKülvata();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                        });
+                        peenraruudustik.add(proovinruutu, i, j);
+
+                //peenraruudustik.add(peenraruut, i, j);
+                //AndmeKonvertija.asukohaandmed(i+1, j+1);
+               // peenraruudustik.add(proovinruutu, i, j);
+
                // peenraruudustik.add(nupp, i, j);
             }
+
         }
 
         for (int i = 0; i <viimanerida; i++) {
-                peenraruudustik.add(Peenar.looPeenar(parameetrid), i , read);
+            Label nupp = new Label("Kliki ja külva!");
+            nupp.setTextAlignment(TextAlignment.CENTER);
+            nupp.setAlignment(Pos.CENTER);
+            Rectangle peenraruut = looPeenar(parameetrid);
+            StackPane proovinruutu = new StackPane(peenraruut, nupp);
+            peenraruudustik.add(proovinruutu, i, read);
+
+                //peenraruudustik.add(Peenar.looPeenar(parameetrid), i , read);
               //  peenraruudustik.add(nupp, i, read);
             }
 

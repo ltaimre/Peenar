@@ -11,8 +11,9 @@ import java.util.List;
 /**
  * Created by liisi on 29.12.2015.
  */
-public class AndmeKonvertija {
+public class AndmeKonvertija { //klass erinevate abimeetoditega, peamiselt andmetöötluseks
 
+    //meetod, mis loeb tekstfieldedist teksti ja tagastab neist andmetest massiivi.
     public static int[] korja_andmed(TextField esimene, TextField teine) {
         String peenrad = esimene.getText();
         String read = teine.getText();
@@ -22,9 +23,9 @@ public class AndmeKonvertija {
             peenraandmed[0] = Integer.parseInt(peenrad);
             peenraandmed[1] = Integer.parseInt(read);
             if (peenraandmed[0] < peenraandmed[1]) {
-                new VeaAken("Ridu võiks ikka vähem kui peenraid olla!");
+                new VeaAken("Ridu võiks ikka vähem kui peenraid olla!"); //juhuks kui kasutaja sisestab rohkem ridu kui tal peenraid on
             }else {
-                peenraandmed[2] = 1;
+                peenraandmed[2] = 1; //kui on õnnestunud andmed vigadeta kätte saada, on massiivi 3 number 1 ja joonistatakse aken.
             }
         } catch (NumberFormatException e) {
             new VeaAken("Nii peenarde kui ridade arv võiks ikka number olla!");
@@ -35,13 +36,22 @@ public class AndmeKonvertija {
 
     }
 
-    public static int[] asukohaandmed (GridPane ruudustik, Node element) {
-        int[] asukohaindeks = new int[2];
-        asukohaindeks[0]= ruudustik.getRowIndex(element);
-        asukohaindeks[1]= ruudustik.getColumnIndex(element);
-        return asukohaindeks;
+    public static int salvestaandmed (int [] andmed) {
+        int peenrad = andmed [0];
+        return peenrad;
+
     }
 
+    //nummerdab gridpanes olevad peenrad
+    public static int asukohaandmed (int rida, int tulp) {
+        int reanumber = rida;
+        int tulbanumber = tulp;
+        int asukoht = rida * tulp;
+        System.out.println(asukoht);
+        return asukoht;
+    }
+
+    //loeb failist teksti ja tagastab ArrayListi
     public static List<String> loefailist(String failinimi) throws Exception {
         List<String> nimekiri = new ArrayList<>();
         File minufail = new File(failinimi);
@@ -54,6 +64,7 @@ public class AndmeKonvertija {
         lugeja.close();
         return nimekiri;
     }
+
 
 }
 

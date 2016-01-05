@@ -13,14 +13,8 @@ import javafx.stage.Stage;
 import np.com.ngopal.control.AutoFillTextBox;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-/**
- * Created by Ülle on 27.12.2015.
- */
 public class MidaKülvata {
 
     Stage külvamisaken = new Stage();
@@ -47,17 +41,19 @@ public class MidaKülvata {
 
 
 
-
-
         HBox külva = new HBox();
         külva.setSpacing(10);
         final AutoFillTextBox box = new AutoFillTextBox(data);
         Label a = new Label("Mida külvame? ");
         Button b = new Button("Sobib!");
-        final String[] siinkasvab = new String[1];
+        //int listipikkus = nimekirjapikkus;
+       // final String[] siinkasvab = new String[listipikkus];
+
+        List<String> siiaistutasin = new ArrayList<>();
         b.setOnAction(event -> {
-                    siinkasvab[0] = box.getText();
-                    System.out.println(Arrays.toString(siinkasvab));
+                  //  siinkasvab[0] = box.getText();
+                   // siiaistutasin.add([0], siinkasvab[0]);
+                  //  System.out.println(siiaistutasin);
                     külvamisaken.close();
                 });
 
