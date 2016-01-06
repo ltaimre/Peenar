@@ -1,4 +1,5 @@
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -9,7 +10,7 @@ import javafx.scene.shape.Rectangle;
 public class Peenar {
 
     Peenar(double[] andmed){
-        looPeenraAla(looPeenar(andmed), "Kliki ja külva");
+      //  looPeenraAla(looPeenar(andmed), "Kliki ja külva");
 
            }
         //joonistab peenraruudu
@@ -22,10 +23,18 @@ public class Peenar {
           return peenar;
         }
 
-        public static StackPane looPeenraAla(Rectangle ruut, String tekst) {
+        public static void looPeenraAla(Rectangle ruut, String tekst, GridPane sihtkoht, int a, int b) {
             Label siinkasvab = new Label(tekst);
             StackPane peenraala = new StackPane(ruut, siinkasvab);
+            peenraala.setOnMouseClicked(event -> {
+                ruut.setFill(Color.LAWNGREEN);
+                try {
+                    new MidaKülvata(ruut, sihtkoht, a, b);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-            return peenraala;
+            });
+            sihtkoht.add(peenraala, a, b);
         }
 }

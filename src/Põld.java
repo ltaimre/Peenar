@@ -66,10 +66,12 @@ public class Põld {
         String kiri = "Kliki ja külva";
         for (int i = 0; i < peenradreas; i++) {
             for (int j = 0; j < (read-1); j++) {
-
                 Rectangle p = Peenar.looPeenar(parameetrid);
-                StackPane pa = Peenar.looPeenraAla(p, "kliki ja külva");
-                pa.setOnMouseClicked(event -> {
+                Peenar.looPeenraAla(p, "kliki", peenraruudustik, i, j);
+
+               // Rectangle p = Peenar.looPeenar(parameetrid);
+               // StackPane pa = Peenar.looPeenraAla(p, "kliki ja külva", peenraruudustik);
+              /*  pa.setOnMouseClicked(event -> {
                     p.setFill(Color.LAWNGREEN);
                     int r= peenraruudustik.getRowIndex(pa);
                    int t = peenraruudustik.getColumnIndex(pa);
@@ -84,10 +86,10 @@ public class Põld {
                         e.printStackTrace();
                     }
 
-                });
+                }); */
 
 
-                peenraruudustik.add(pa, i, j);
+              //  peenraruudustik.add(pa, i, j);
             }
 
         }

@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1db006e4-2870-4ded-967b-09baad56a593" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Peenar.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AndmeKonvertija.java" afterPath="$PROJECT_DIR$/src/AndmeKonvertija.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MidaKülvata.java" afterPath="$PROJECT_DIR$/src/MidaKülvata.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Peenar.java" afterPath="$PROJECT_DIR$/src/Peenar.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Põld.java" afterPath="$PROJECT_DIR$/src/Põld.java" />
     </list>
     <ignored path="Peenar.iws" />
@@ -74,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MidaKülvata.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MidaKülvata.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MidaKülvata.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="52" column="18" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.19444445">
+              <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Põld.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Põld.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Põld.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22222222">
-              <caret line="82" column="43" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="69" column="16" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -102,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/src/Peenar.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="73" selection-start-line="24" selection-start-column="73" selection-end-line="24" selection-end-column="73" />
+              <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -191,8 +190,8 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/AndmeKonvertija.java" />
         <option value="$PROJECT_DIR$/src/Põld.java" />
-        <option value="$PROJECT_DIR$/src/MidaKülvata.java" />
         <option value="$PROJECT_DIR$/src/Peenar.java" />
+        <option value="$PROJECT_DIR$/src/MidaKülvata.java" />
       </list>
     </option>
   </component>
@@ -670,7 +669,13 @@
       <option name="project" value="LOCAL" />
       <updated>1452029043885</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Külvamine enam-vähem töötab">
+      <created>1452094515522</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1452094515522</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -749,7 +754,8 @@
     <MESSAGE value="Arvutab ja joonistab peenrad õigesti. Peenra ruudu moodustamine tõstetud eraldi klassi." />
     <MESSAGE value="Loeb failist ja salvestab valitud taime." />
     <MESSAGE value="Mingit lootust nagu oleks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mingit lootust nagu oleks" />
+    <MESSAGE value="Külvamine enam-vähem töötab" />
+    <option name="LAST_COMMIT_MESSAGE" value="Külvamine enam-vähem töötab" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1178,20 +1184,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MidaKülvata.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="18" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Peenar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="73" selection-start-line="24" selection-start-column="73" selection-end-line="24" selection-end-column="73" />
+          <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1200,8 +1196,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Põld.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22222222">
-          <caret line="82" column="43" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="16" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MidaKülvata.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19444445">
+          <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

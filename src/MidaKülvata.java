@@ -6,7 +6,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import np.com.ngopal.control.AutoFillTextBox;
@@ -17,15 +16,11 @@ public class MidaKülvata {
 
 
 
-    MidaKülvata(double[] üks, GridPane koht, int rida, int tulp) throws Exception {
-
+    MidaKülvata(Rectangle üks, GridPane koht, int rida, int tulp) throws Exception {
         looAken(üks, koht, rida, tulp);
-
-
-
     }
 
-    public void looAken(double[] üks, GridPane koht, int rida, int tulp) throws Exception {
+    public void looAken(Rectangle üks, GridPane koht, int rida, int tulp) throws Exception {
         Stage külvamisaken = new Stage();
         Scene midakülvata;
 
@@ -43,19 +38,9 @@ public class MidaKülvata {
         Button b = new Button("Sobib!");
         b.setOnAction(event -> {
                 String eh = AndmeKonvertija.loeAutoFillkastist(box);
-                Rectangle p = Peenar.looPeenar(üks);
-                StackPane pa = Peenar.looPeenraAla(p, eh);
-                pa.setOnMouseClicked(event1 -> {
-                try {
-                        new MidaKülvata(üks, koht, rida, tulp);
-                    } catch (Exception e) {
-                  e.printStackTrace();
-                 }
-                    koht.add(pa, rida, tulp);
-                        }
-                    );
-        koht.add(pa, rida, tulp);
-        külvamisaken.close();
+                Peenar.looPeenraAla(üks, eh,  koht, rida, tulp);
+                külvamisaken.close();
+
         });
 
         a.translateYProperty().set(5);
