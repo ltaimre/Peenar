@@ -1,44 +1,39 @@
-import com.sun.org.apache.xpath.internal.SourceTree;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import np.com.ngopal.control.AutoFillTextBox;
 
-import java.io.*;
 import java.util.*;
 
 public class MidaKülvata {
 
-    Stage külvamisaken = new Stage();
-    Scene midakülvata;
+
+
+    MidaKülvata(double[] üks, GridPane koht, int rida, int tulp) throws Exception {
+
+        looAken(üks, koht, rida, tulp);
 
 
 
-    MidaKülvata() throws Exception {
-        looAken();
     }
 
-    private void looAken() throws Exception {
+    public void looAken(double[] üks, GridPane koht, int rida, int tulp) throws Exception {
+        Stage külvamisaken = new Stage();
+        Scene midakülvata;
 
         ObservableList data = FXCollections.observableArrayList();
-        /*String[] s = new String[]{"apple","ball","cat","doll","elephant"};
-        for(int j=0; j<s.length; j++) {
-            data.add(s[j]);
-        }*/
-
         List<String> juurviljad = AndmeKonvertija.loefailist("juurviljad.txt");
         for(int j=0; (j<juurviljad.size()-1); j++) {
             data.add(juurviljad.get(j));
         }
-
 
 
         HBox külva = new HBox();
@@ -46,16 +41,22 @@ public class MidaKülvata {
         final AutoFillTextBox box = new AutoFillTextBox(data);
         Label a = new Label("Mida külvame? ");
         Button b = new Button("Sobib!");
-        //int listipikkus = nimekirjapikkus;
-       // final String[] siinkasvab = new String[listipikkus];
-
-        List<String> siiaistutasin = new ArrayList<>();
         b.setOnAction(event -> {
-                  //  siinkasvab[0] = box.getText();
-                   // siiaistutasin.add([0], siinkasvab[0]);
-                  //  System.out.println(siiaistutasin);
-                    külvamisaken.close();
-                });
+                String eh = AndmeKonvertija.loeAutoFillkastist(box);
+                Rectangle p = Peenar.looPeenar(üks);
+                StackPane pa = Peenar.looPeenraAla(p, eh);
+                pa.setOnMouseClicked(event1 -> {
+                try {
+                        new MidaKülvata(üks, koht, rida, tulp);
+                    } catch (Exception e) {
+                  e.printStackTrace();
+                 }
+                    koht.add(pa, rida, tulp);
+                        }
+                    );
+        koht.add(pa, rida, tulp);
+        külvamisaken.close();
+        });
 
         a.translateYProperty().set(5);
         a.translateXProperty().set(5);
@@ -66,10 +67,6 @@ public class MidaKülvata {
         külvamisaken.setScene(midakülvata);
         midakülvata.getStylesheets().add(getClass().getResource("control.css").toExternalForm());
         külvamisaken.show();
-
-
-
-
 }
 
 }

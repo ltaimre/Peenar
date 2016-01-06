@@ -1,6 +1,8 @@
+import com.sun.org.apache.xpath.internal.SourceTree;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import np.com.ngopal.control.AutoFillTextBox;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -36,11 +38,6 @@ public class AndmeKonvertija { //klass erinevate abimeetoditega, peamiselt andme
 
     }
 
-    public static int salvestaandmed (int [] andmed) {
-        int peenrad = andmed [0];
-        return peenrad;
-
-    }
 
     //nummerdab gridpanes olevad peenrad
     public static int asukohaandmed (int rida, int tulp) {
@@ -51,7 +48,7 @@ public class AndmeKonvertija { //klass erinevate abimeetoditega, peamiselt andme
         return asukoht;
     }
 
-    //loeb failist teksti ja tagastab ArrayListi
+    //meetod failist andmete kättesaamiseks
     public static List<String> loefailist(String failinimi) throws Exception {
         List<String> nimekiri = new ArrayList<>();
         File minufail = new File(failinimi);
@@ -63,6 +60,13 @@ public class AndmeKonvertija { //klass erinevate abimeetoditega, peamiselt andme
         }
         lugeja.close();
         return nimekiri;
+    }
+
+    //meetod AutoFillkastist andmete kättesaamieks
+    public static String loeAutoFillkastist (AutoFillTextBox kast) {
+        String kasv = kast.getText();
+        return kasv;
+
     }
 
 

@@ -1,23 +1,11 @@
-import com.sun.org.apache.xpath.internal.SourceTree;
-import com.sun.org.apache.xpath.internal.operations.And;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-
-import java.math.BigDecimal;
-import java.util.Arrays;
 
 public class Põld {
 
@@ -60,6 +48,12 @@ public class Põld {
 
     }
 
+    private String miskasvab(String see) {
+        String too = see;
+        return too;
+
+    }
+
     //joonistab peenraruudustiku
     private Scene joonistapõld(double[] parameetrid) throws Exception {
         double laius = parameetrid[0];
@@ -69,36 +63,36 @@ public class Põld {
         int viimanerida = (int)parameetrid[4];
 
         GridPane peenraruudustik = new GridPane();
-
+        String kiri = "Kliki ja külva";
         for (int i = 0; i < peenradreas; i++) {
             for (int j = 0; j < (read-1); j++) {
-                Label nupp = new Label("Kliki ja külva!");
-                nupp.setTextAlignment(TextAlignment.CENTER);
-                nupp.setAlignment(Pos.CENTER);
-                Rectangle peenraruut = looPeenar(parameetrid);
-                StackPane proovinruutu = new StackPane(peenraruut, nupp);
-                peenraruut.setOnMouseClicked(event -> {
-                    peenraruut.setFill(Color.LAWNGREEN);
+
+                Rectangle p = Peenar.looPeenar(parameetrid);
+                StackPane pa = Peenar.looPeenraAla(p, "kliki ja külva");
+                pa.setOnMouseClicked(event -> {
+                    p.setFill(Color.LAWNGREEN);
+                    int r= peenraruudustik.getRowIndex(pa);
+                   int t = peenraruudustik.getColumnIndex(pa);
+
                     try {
-                        System.out.println("Tahan printida");
-                        new MidaKülvata();
+                        new MidaKülvata(parameetrid, peenraruudustik, t, r);
+
+                        //Rectangle p = Peenar.looPeenar(parameetrid);
+
 
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                        });
-                        peenraruudustik.add(proovinruutu, i, j);
 
-                //peenraruudustik.add(peenraruut, i, j);
-                //AndmeKonvertija.asukohaandmed(i+1, j+1);
-               // peenraruudustik.add(proovinruutu, i, j);
+                });
 
-               // peenraruudustik.add(nupp, i, j);
+
+                peenraruudustik.add(pa, i, j);
             }
 
         }
 
-        for (int i = 0; i <viimanerida; i++) {
+      /*  for (int i = 0; i <viimanerida; i++) {
             Label nupp = new Label("Kliki ja külva!");
             nupp.setTextAlignment(TextAlignment.CENTER);
             nupp.setAlignment(Pos.CENTER);
@@ -108,7 +102,7 @@ public class Põld {
 
                 //peenraruudustik.add(Peenar.looPeenar(parameetrid), i , read);
               //  peenraruudustik.add(nupp, i, read);
-            }
+            } */
 
         peenravaade = new Scene(peenraruudustik, 1005, 600);
         return peenravaade;
@@ -134,6 +128,8 @@ public class Põld {
 
         return peenramõõdud;
     }
+
+
 
 
 }
