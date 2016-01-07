@@ -6,9 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-/**
- * Created by liisi on 29.12.2015.
- */
+
 public class VeaAken {
     Stage hoiatusaken = new Stage();
     Scene hoiatuseks;
@@ -23,7 +21,7 @@ public class VeaAken {
         String hoiatustekst = tekst;
         hoiatussilt = new Label(hoiatustekst);
         suleaken = new Button("Sain aru!");
-        suleaken.setOnAction( event -> {
+        suleaken.setOnAction(event -> {
                     hoiatusaken.close();
                     new AvaLeht();
                 }
@@ -37,7 +35,6 @@ public class VeaAken {
         hoiatuseks = new Scene(aken, 300, 100);
         hoiatusaken.setScene(hoiatuseks);
         hoiatusaken.show();
-
 
 
     }

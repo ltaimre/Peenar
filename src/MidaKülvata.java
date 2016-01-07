@@ -14,44 +14,45 @@ import java.util.*;
 
 public class MidaKülvata {
 
-
-
-    MidaKülvata(Rectangle üks, GridPane koht, int rida, int tulp) throws Exception {
-        looAken(üks, koht, rida, tulp);
+    //Loob akna, kust saab määrata, mida peenrale külvatakse. Saadud andmete põhjal joonistab uue peenraruudu
+    MidaKülvata(double[] parameetrid, int rida, int tulp, GridPane väli) throws Exception {
+        looAken(parameetrid, väli, rida, tulp);
     }
 
-    public void looAken(Rectangle üks, GridPane koht, int rida, int tulp) throws Exception {
+    public void looAken(double[] parameetrid, GridPane väli, int rida, int tulp) throws Exception {
         Stage külvamisaken = new Stage();
         Scene midakülvata;
 
         ObservableList data = FXCollections.observableArrayList();
-        List<String> juurviljad = AndmeKonvertija.loefailist("juurviljad.txt");
-        for(int j=0; (j<juurviljad.size()-1); j++) {
+        List<String> juurviljad = AndmeKonvertija.loeFailist("juurviljad.txt");
+        for (int j = 0; (j < juurviljad.size() - 1); j++) {
             data.add(juurviljad.get(j));
         }
 
+        /* AutoFill textbox pärineb:
+         http://blog.ngopal.com.np/2011/07/04/autofill-textbox-with-filtermode-in-javafx-2-0-custom-control/
+          */
 
         HBox külva = new HBox();
         külva.setSpacing(10);
         final AutoFillTextBox box = new AutoFillTextBox(data);
         Label a = new Label("Mida külvame? ");
-        Button b = new Button("Sobib!");
-        b.setOnAction(event -> {
-                String eh = AndmeKonvertija.loeAutoFillkastist(box);
-                Peenar.looPeenraAla(üks, eh,  koht, rida, tulp);
-                külvamisaken.close();
+        Button salvesta = new Button("Sobib!");
+       salvesta.setOnAction(event -> {
+            String külvatu = AndmeKonvertija.loeAutoFillkastist(box); //loetakse andmed külvamise sisestuskastist
+            Peenar peenar = new Peenar(parameetrid, külvatu);
+            Peenar.looPeenraAla(parameetrid, külvatu, rida, tulp, väli);
+            külvamisaken.close();
 
         });
 
         a.translateYProperty().set(5);
         a.translateXProperty().set(5);
-        külva.getChildren().addAll(a, box, b);
-
-
+        külva.getChildren().addAll(a, box, salvesta);
         midakülvata = new Scene(külva, 300, 100);
         külvamisaken.setScene(midakülvata);
         midakülvata.getStylesheets().add(getClass().getResource("control.css").toExternalForm());
         külvamisaken.show();
-}
+    }
 
 }

@@ -1,7 +1,9 @@
+import com.sun.corba.se.spi.ior.ObjectKey;
 import com.sun.org.apache.xpath.internal.SourceTree;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import np.com.ngopal.control.AutoFillTextBox;
 
 import java.io.BufferedReader;
@@ -10,37 +12,33 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by liisi on 29.12.2015.
- */
 public class AndmeKonvertija { //klass erinevate abimeetoditega, peamiselt andmetöötluseks
 
     //meetod, mis loeb tekstfieldedist teksti ja tagastab neist andmetest massiivi.
-    public static int[] korja_andmed(TextField esimene, TextField teine) {
-        String peenrad = esimene.getText();
-        String read = teine.getText();
-        int[] peenraandmed = new int[3];
-        peenraandmed[2] = 0;
+    public static int[] korjaAndmed(TextField esimene, TextField teine, String veatekst1, String veatekst2) {
+        String esimeseltrealt = esimene.getText();
+        String teiselttrealt = teine.getText();
+        int[] andmed = new int[3];
+        andmed[2] = 0;
         try {
-            peenraandmed[0] = Integer.parseInt(peenrad);
-            peenraandmed[1] = Integer.parseInt(read);
-            if (peenraandmed[0] < peenraandmed[1]) {
-                new VeaAken("Ridu võiks ikka vähem kui peenraid olla!"); //juhuks kui kasutaja sisestab rohkem ridu kui tal peenraid on
-            }else {
-                peenraandmed[2] = 1; //kui on õnnestunud andmed vigadeta kätte saada, on massiivi 3 number 1 ja joonistatakse aken.
+            andmed[0] = Integer.parseInt(esimeseltrealt);
+            andmed[1] = Integer.parseInt(teiselttrealt);
+            if (andmed[0] < andmed[1]) {
+                new VeaAken(veatekst1); //juhuks kui kasutaja sisestab rohkem ridu kui tal peenraid on
+            } else {
+               andmed[2] = 1; //kui on õnnestunud andmed vigadeta kätte saada, on saab kolmanda liikme väärtuseks 1, mis lubab joonistada põlluakna.
             }
         } catch (NumberFormatException e) {
-            new VeaAken("Nii peenarde kui ridade arv võiks ikka number olla!");
+            new VeaAken(veatekst2);
         } finally {
-            return peenraandmed;
+            return andmed;
 
         }
 
     }
 
-
     //nummerdab gridpanes olevad peenrad
-    public static int asukohaandmed (int rida, int tulp) {
+    public static int asukohAandmed(int rida, int tulp) {
         int reanumber = rida;
         int tulbanumber = tulp;
         int asukoht = rida * tulp;
@@ -49,7 +47,7 @@ public class AndmeKonvertija { //klass erinevate abimeetoditega, peamiselt andme
     }
 
     //meetod failist andmete kättesaamiseks
-    public static List<String> loefailist(String failinimi) throws Exception {
+    public static List<String> loeFailist(String failinimi) throws Exception {
         List<String> nimekiri = new ArrayList<>();
         File minufail = new File(failinimi);
         BufferedReader lugeja = new BufferedReader(new FileReader(minufail));
@@ -63,14 +61,25 @@ public class AndmeKonvertija { //klass erinevate abimeetoditega, peamiselt andme
     }
 
     //meetod AutoFillkastist andmete kättesaamieks
-    public static String loeAutoFillkastist (AutoFillTextBox kast) {
-        String kasv = kast.getText();
-        return kasv;
+    public static String loeAutoFillkastist(AutoFillTextBox kast) {
+        String tekstkastist = kast.getText();
+        return tekstkastist;
+
+    }
+
+    public static void arvutaRuudustikuSuurus(GridPane ruudustik, StackPane ruut) {
+
+
+        int tulbaarv = ruudustik.getColumnSpan(ruut);
+
+
+        System.out.println(tulbaarv);
+        }
+
 
     }
 
 
-}
 
 
 

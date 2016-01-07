@@ -1,40 +1,56 @@
+
+
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-/**
- * Created by liisi on 6.01.2016.
- */
 public class Peenar {
+    double[] mõõdud;
+    String missiinkasvab = "kliki ja külva";
+    GridPane asukoht;
+    int kohtreas;
+    int kohttulbas;
+    double laius;
+    double pikkus;
 
-    Peenar(double[] andmed){
-      //  looPeenraAla(looPeenar(andmed), "Kliki ja külva");
 
-           }
-        //joonistab peenraruudu
-        public static Rectangle looPeenar(double[] parameetrid)  {
-             double laius = parameetrid[0];
-            double pikkus = parameetrid[1];
-            Rectangle peenar = new Rectangle(laius, pikkus, Color.SANDYBROWN);
-            peenar.setStroke(Color.DARKGREEN);
-            peenar.setStrokeWidth(5);
-          return peenar;
-        }
 
-        public static void looPeenraAla(Rectangle ruut, String tekst, GridPane sihtkoht, int a, int b) {
-            Label siinkasvab = new Label(tekst);
-            StackPane peenraala = new StackPane(ruut, siinkasvab);
-            peenraala.setOnMouseClicked(event -> {
-                ruut.setFill(Color.LAWNGREEN);
-                try {
-                    new MidaKülvata(ruut, sihtkoht, a, b);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+    Peenar (double[] parameetrid, String tekst, int rida, int tulp, GridPane sihtkoht) {
+        mõõdud = parameetrid;
+        missiinkasvab = tekst;
+        kohtreas = rida;
+        kohttulbas = tulp;
+        asukoht = sihtkoht;
+    }
 
-            });
-            sihtkoht.add(peenraala, a, b);
-        }
-}
+    //joonistab peenrakasti põhjal peenraala, millele on võimalik lisada
+    public static void looPeenraAla(double[] parameetrid, String tekst, int rida, int tulp, GridPane sihtkoht) {
+        double laius = parameetrid[0];
+        double pikkus = parameetrid[1];
+        Rectangle peenar1 = new Rectangle(laius, pikkus, Color.SANDYBROWN);
+        peenar1.setStroke(Color.DARKGREEN);
+        peenar1.setStrokeWidth(5);
+
+
+
+        Label siinkasvab = new Label(tekst);
+        StackPane peenraala = new StackPane(peenar1, siinkasvab);
+        peenraala.setOnMouseClicked(event -> {
+            peenar1.setFill(Color.LAWNGREEN);
+          try {
+                new MidaKülvata(parameetrid, rida, tulp, sihtkoht);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        });
+       sihtkoht.add(peenraala, rida, tulp);
+    }
+
+
+
+
+    }
