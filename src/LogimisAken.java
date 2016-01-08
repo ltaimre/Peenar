@@ -19,7 +19,7 @@ public class LogimisAken {
     LogimisAken() {
         setupScene();
         setupLogin();
-        setupRegister();
+        //setupRegister();
     }
 
     private void setupScene() {
@@ -48,6 +48,16 @@ public class LogimisAken {
             if (result) {
                 KasutajaAndmed ud = new KasutajaAndmed(nimi);
                 stage.close();
+                int[] andmed = new int[3];
+                andmed[0] = 6;
+                andmed[1] = 3;
+                andmed[2] = 1;
+                try {
+                    new Põld(andmed);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
         });
     }

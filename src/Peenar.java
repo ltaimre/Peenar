@@ -14,6 +14,7 @@ public class Peenar {
     int kohttulbas;
     double laius;
     double pikkus;
+    int peenranumber;
 
 
 
@@ -23,6 +24,7 @@ public class Peenar {
         kohtreas = rida;
         kohttulbas = tulp;
         asukoht = sihtkoht;
+        peenranumber = kohtreas + 1 * kohttulbas;
     }
 
     //joonistab peenrakasti põhjal peenraala, millele on võimalik lisada
@@ -49,6 +51,7 @@ public class Peenar {
         });
        sihtkoht.add(peenraala, rida, tulp);
     }
+
 
 
 

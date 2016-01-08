@@ -83,3 +83,6 @@ public class AndmeKonvertija { //klass erinevate abimeetoditega, peamiselt andme
 
 
 
+
+
+

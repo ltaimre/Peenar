@@ -43,7 +43,7 @@ public class AvaLeht {
         korjaAndmed = new Button("Hakka pihta");
         korjaAndmed.setOnAction(event -> {
             try {
-                Põld minupõld = new Põld(AndmeKonvertija.korjaAndmed(peenardeArv, ridadeArv, ridurohkem, polenumber), "Kliki"); //saadud andmete põhjal joonistab põllumaa
+                Põld minupõld = new Põld(AndmeKonvertija.korjaAndmed(peenardeArv, ridadeArv, ridurohkem, polenumber)); //saadud andmete põhjal joonistab põllumaa
                 System.out.println(minupõld.peenardeArv);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -65,6 +65,9 @@ public class AvaLeht {
         parem.setMinWidth(200);
         Label laepõld = new Label("NÄITA MINU PÕLDU:");
         Button logisisse = new Button("Logi sisse");
+        logisisse.setOnAction(event -> {
+            new LogimisAken();
+        });
         logisisse.setAlignment(Pos.CENTER);
         parem.getChildren().addAll(laepõld, logisisse);
 

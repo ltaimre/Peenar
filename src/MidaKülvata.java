@@ -1,3 +1,5 @@
+
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -40,7 +42,8 @@ public class MidaKülvata {
         Button salvesta = new Button("Sobib!");
        salvesta.setOnAction(event -> {
             String külvatu = AndmeKonvertija.loeAutoFillkastist(box); //loetakse andmed külvamise sisestuskastist
-            Peenar peenar = new Peenar(parameetrid, külvatu);
+            Peenar peenar = new Peenar(parameetrid, külvatu, rida, tulp, väli);
+            System.out.println(peenar.kohttulbas);
             Peenar.looPeenraAla(parameetrid, külvatu, rida, tulp, väli);
             külvamisaken.close();
 

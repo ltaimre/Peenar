@@ -10,6 +10,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Põld {
     double peenardeArv;
     double ridadeArv;
@@ -20,6 +23,10 @@ public class Põld {
     int peenradreas;
     int read;
     GridPane peenraruudustik;
+    int [] siinkasvab;
+
+
+
 
 
     //põllu konstantsed mõõdud
@@ -29,12 +36,22 @@ public class Põld {
     String kiri = "Kliki ja külva";
 
 
-    Põld(int[] andmedSisestusväljalt, String põllul) throws Exception {
+    Põld(int[] andmedSisestusväljalt) throws Exception {
        if (andmedSisestusväljalt[2] == 1) { // sisend andmedSisestusväljalt[2] on vajalik selleks, et programm käivituks vaid siis kui andmed on korrektsed
           joonistaPõlluaken(andmedSisestusväljalt);
        }
 
     }
+
+    private void loonimekiri(int [] list) {
+        int pikkus =list.length;
+        for (int i = 0; i < pikkus; i++) {
+            list[i] = i;
+
+        }
+        System.out.println(Arrays.toString(list));
+    }
+
 
     private void joonistaPõlluaken(int[]andmedSisestusväljalt) throws Exception {
         VBox aknakast = new VBox();
@@ -61,21 +78,27 @@ public class Põld {
 
         GridPane peenraruudustik = new GridPane();
         peenraruudustik.setStyle("-fx-background-color: DARKGREEN;");
-
+        int järjekorranumber = 0;
         //täidab ruudustiku täiread uute peenardega
         for (int i = 0; i < peenradreas; i++) {
             for (int j = 0; j < (read - 1); j++) {
-                peenar = new Peenar(parameetrid, "tekst");
+                peenar = new Peenar(parameetrid, "tekst", i, j, peenraruudustik);
+                järjekorranumber ++;
+
+               // System.out.println(siinpõllul[peenar.peenranumber]);
                 peenar.looPeenraAla(parameetrid, "tekst", i, j, peenraruudustik);
             }
         }
         //täidab ruudustiku viimase (teatud juhtudel pooliku) rea uute peenardega
         for (int i = 0; i < viimanerida; i++) {
-            System.out.println("olen viimases reas");
-            peenar = new Peenar(parameetrid, "tekst");
+
+            peenar = new Peenar(parameetrid, "tekst", i, viimanerida, peenraruudustik);
             peenar.looPeenraAla(parameetrid, "tekst", i, viimanerida, peenraruudustik);
 
         }
+
+        siinkasvab = new int [(int)peenardeArv];
+        loonimekiri(siinkasvab);
         return peenraruudustik;
     }
 
@@ -104,26 +127,18 @@ public class Põld {
     }
 
 
-
-
     private HBox loojalus() {
         HBox alumisednupud = new HBox();
         alumisednupud.setSpacing(30);
         Button salvesta = new Button("Salvesta");
-        salvesta.setOnAction(event1 -> {
-            System.out.println(peenardeArv);
-            System.out.println("NIISAMA");
-            System.out.println(ridadeArv);
-            System.out.println(peenraidReas);
-            getNodeFromGridPane(peenraruudustik, 0, 0);
-
-        });
         Button sulge = new Button("Sulge");
         sulge.setOnAction(event -> põllumaa.close());
         alumisednupud.getChildren().addAll(salvesta, sulge);
         return alumisednupud;
 
     }
+
+
 
 
 
