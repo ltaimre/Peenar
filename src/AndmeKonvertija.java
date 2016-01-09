@@ -14,7 +14,7 @@ import java.util.List;
 
 public class AndmeKonvertija { //klass erinevate abimeetoditega, peamiselt andmetöötluseks
 
-    //meetod, mis loeb tekstfieldedist teksti ja tagastab neist andmetest massiivi.
+    //meetod, mis loeb tekstfieldist teksti ja tagastab neist andmetest massiivi.
     public static int[] korjaAndmed(TextField esimene, TextField teine, String veatekst1, String veatekst2) {
         String esimeseltrealt = esimene.getText();
         String teiselttrealt = teine.getText();
@@ -26,7 +26,7 @@ public class AndmeKonvertija { //klass erinevate abimeetoditega, peamiselt andme
             if (andmed[0] < andmed[1]) {
                 new VeaAken(veatekst1); //juhuks kui kasutaja sisestab rohkem ridu kui tal peenraid on
             } else {
-               andmed[2] = 1; //kui on õnnestunud andmed vigadeta kätte saada, on saab kolmanda liikme väärtuseks 1, mis lubab joonistada põlluakna.
+                andmed[2] = 1; //kui on õnnestunud andmed vigadeta kätte saada, on saab kolmanda liikme väärtuseks 1, mis lubab joonistada põlluakna.
             }
         } catch (NumberFormatException e) {
             new VeaAken(veatekst2);
@@ -35,15 +35,6 @@ public class AndmeKonvertija { //klass erinevate abimeetoditega, peamiselt andme
 
         }
 
-    }
-
-    //nummerdab gridpanes olevad peenrad
-    public static int asukohAandmed(int rida, int tulp) {
-        int reanumber = rida;
-        int tulbanumber = tulp;
-        int asukoht = rida * tulp;
-        System.out.println(asukoht);
-        return asukoht;
     }
 
     //meetod failist andmete kättesaamiseks
@@ -67,17 +58,7 @@ public class AndmeKonvertija { //klass erinevate abimeetoditega, peamiselt andme
 
     }
 
-    public static void arvutaRuudustikuSuurus(GridPane ruudustik, StackPane ruut) {
-
-
-        int tulbaarv = ruudustik.getColumnSpan(ruut);
-
-
-        System.out.println(tulbaarv);
-        }
-
-
-    }
+}
 
 
 

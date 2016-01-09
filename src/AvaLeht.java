@@ -10,6 +10,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.Arrays;
+
 public class AvaLeht {
     Stage programm = new Stage();
     Scene küsiandmeid;
@@ -39,51 +41,33 @@ public class AvaLeht {
         String ridurohkem = "Peenraid võiks ikka rohkem kui ridu olla";
         String polenumber = "Nii peenarde arv kui read võiksid ikka numbrid olla";
 
-        //nupp
+        //nupp, mis võtab kasutaja andmed ja nende põhjal loob uue põllu
         korjaAndmed = new Button("Hakka pihta");
         korjaAndmed.setOnAction(event -> {
             try {
                 Põld minupõld = new Põld(AndmeKonvertija.korjaAndmed(peenardeArv, ridadeArv, ridurohkem, polenumber)); //saadud andmete põhjal joonistab põllumaa
-                System.out.println(minupõld.peenardeArv);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             programm.close();
         });
 
-        //vasakpool
-        VBox vasak = new VBox();
-        vasak.setPadding(new Insets(15, 20, 15, 20));
-        vasak.setSpacing(5);
-        vasak.setMinWidth(200);
-        vasak.getChildren().addAll(alusta, peenardeArv, ridadeArv, korjaAndmed);
-
-        //parempool
-        VBox parem = new VBox();
-        parem.setPadding(new Insets(15, 20, 15, 20));
-        parem.setSpacing(10);
-        parem.setMinWidth(200);
-        Label laepõld = new Label("NÄITA MINU PÕLDU:");
-        Button logisisse = new Button("Logi sisse");
-        logisisse.setOnAction(event -> {
-            new LogimisAken();
-        });
-        logisisse.setAlignment(Pos.CENTER);
-        parem.getChildren().addAll(laepõld, logisisse);
-
-        //avaaken
+        //avavaade
         VBox avaleht = new VBox();
+        avaleht.setPadding(new Insets(15, 20, 15, 20));
+        avaleht.setSpacing(5);
+        avaleht.setMinWidth(200);
+        avaleht.getChildren().addAll(alusta, peenardeArv, ridadeArv, korjaAndmed);
         avaleht.setStyle("-fx-background-color: GREENYELLOW;");
-        avaleht.getChildren().addAll(vasak, parem);
-
-
 
         //seadista esimene vaade ja ava programm
         küsiandmeid = new Scene(avaleht, 200, 275);
         programm.setScene(küsiandmeid);
         programm.show();
 
+
     }
 }
+
 
 

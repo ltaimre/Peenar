@@ -17,11 +17,11 @@ import java.util.*;
 public class MidaKülvata {
 
     //Loob akna, kust saab määrata, mida peenrale külvatakse. Saadud andmete põhjal joonistab uue peenraruudu
-    MidaKülvata(double[] parameetrid, int rida, int tulp, GridPane väli) throws Exception {
-        looAken(parameetrid, väli, rida, tulp);
+    MidaKülvata(double[] parameetrid, int[] koht, GridPane väli) throws Exception {
+        looAken(parameetrid, väli, koht);
     }
 
-    public void looAken(double[] parameetrid, GridPane väli, int rida, int tulp) throws Exception {
+    public void looAken(double[] parameetrid, GridPane väli, int[] koht) throws Exception {
         Stage külvamisaken = new Stage();
         Scene midakülvata;
 
@@ -40,11 +40,10 @@ public class MidaKülvata {
         final AutoFillTextBox box = new AutoFillTextBox(data);
         Label a = new Label("Mida külvame? ");
         Button salvesta = new Button("Sobib!");
-       salvesta.setOnAction(event -> {
+        salvesta.setOnAction(event -> {
+            Boolean külvatud = true;
             String külvatu = AndmeKonvertija.loeAutoFillkastist(box); //loetakse andmed külvamise sisestuskastist
-            Peenar peenar = new Peenar(parameetrid, külvatu, rida, tulp, väli);
-            System.out.println(peenar.kohttulbas);
-            Peenar.looPeenraAla(parameetrid, külvatu, rida, tulp, väli);
+            Peenar peenar = new Peenar(parameetrid, külvatud, külvatu, koht, väli); //luuakse uus peenar uute andmetega
             külvamisaken.close();
 
         });

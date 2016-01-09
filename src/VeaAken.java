@@ -14,6 +14,7 @@ public class VeaAken {
     Button suleaken;
 
     VeaAken(String tekst) {
+
         looAken(tekst);
     }
 
