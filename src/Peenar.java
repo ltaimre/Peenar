@@ -25,9 +25,9 @@ public class Peenar {
     }
 
     //joonistab peenrakasti põhjal peenraala, kuspeal kuvatakse ka see, mis seal kasvab
-    public static void looPeenraAla(double[] parameetrid, Boolean kasvab, String tekst, int[] indeks, GridPane sihtkoht) {
+    private static void looPeenraAla(double[] parameetrid, Boolean kasvab, String tekst, int[] indeks, GridPane sihtkoht) {
         Rectangle peenar1 = new Rectangle(parameetrid[0], parameetrid[1], Color.SANDYBROWN);
-        if (kasvab == true ) {
+        if (kasvab == true) {
             peenar1.setFill(Color.YELLOWGREEN);
         }
         peenar1.setStroke(Color.DARKGREEN);

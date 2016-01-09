@@ -1,5 +1,6 @@
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -35,15 +36,13 @@ public class Põld {
 
     Põld(int[] andmedSisestusväljalt) throws Exception {
         if (andmedSisestusväljalt[2] == 1) { // sisend andmedSisestusväljalt[2] on vajalik selleks, et programm käivituks vaid siis kui andmed on korrektsed
-            peenardeArv = andmedSisestusväljalt [0];
+            peenardeArv = andmedSisestusväljalt[0];
             ridadeArv = andmedSisestusväljalt[1];
-            double[]peenrasuurus = arvutaPeenramõõdud(peenardeArv, ridadeArv);
+            double[] peenrasuurus = arvutaPeenramõõdud(peenardeArv, ridadeArv);
             peenrastik = joonistapõld(peenardeArv, ridadeArv, peenrasuurus);
             joonistaPõlluaken(peenrastik);
         }
     }
-
-
 
 
     private void joonistaPõlluaken(GridPane ruudustik) throws Exception {
@@ -59,28 +58,28 @@ public class Põld {
     private GridPane joonistapõld(int p, int r, double[] parameetrid) throws Exception {
         //vajalikud parameetrid põlluruudustiku joonistamiseks
         double pD = p * 1.0;
-        double rD = r* 1.0;
+        double rD = r * 1.0;
         double peenraidRitta = Math.ceil(pD / rD);
-        int peenraidRittaI = (int)peenraidRitta;
-        double viimasesReas = pD - (peenraidRitta * (rD-1));
+        int peenraidRittaI = (int) peenraidRitta;
+        double viimasesReas = pD - (peenraidRitta * (rD - 1));
 
         GridPane peenraruudustik = new GridPane();
         peenraruudustik.setStyle("-fx-background-color: DARKGREEN;");
 
         //paneb ruudustikule paika peenrad
         for (int i = 0; i < peenraidRittaI; i++) {
-            for (int j = 0; j < r-1; j++) {
+            for (int j = 0; j < r - 1; j++) {
                 int[] koht = new int[2];
-                koht[0]= i;
-                koht[1]= j;
+                koht[0] = i;
+                koht[1] = j;
                 peenar = new Peenar(parameetrid, VAIKIMISIKÜLV, VAIKIMISIKIRI, koht, peenraruudustik);
             }
         }
         //paneb viimasesse (ebastandartsesse) ritta paika peenrad
-        for (int i = 0; i <viimasesReas; i++) {
+        for (int i = 0; i < viimasesReas; i++) {
             int[] koht = new int[2];
-            koht[0]= i;
-            koht[1]= r;
+            koht[0] = i;
+            koht[1] = r;
             peenar = new Peenar(parameetrid, VAIKIMISIKÜLV, VAIKIMISIKIRI, koht, peenraruudustik);
         }
         return peenraruudustik;
@@ -89,7 +88,7 @@ public class Põld {
 
     private double[] arvutaPeenramõõdud(int p, int r) {
         double pD = p * 1.0;
-        double rD = r* 1.0;
+        double rD = r * 1.0;
         double peenraidRitta = Math.ceil(pD / rD);
 
         double peenraPikkus = (PÕLLU_PIKKUS - 2 * (int) PIIRDELAIUS) / rD;
@@ -103,19 +102,15 @@ public class Põld {
     }
 
 
-
     private HBox loojalus() {
         HBox alumisednupud = new HBox();
         alumisednupud.setSpacing(30);
+        alumisednupud.setMinHeight(100);
+        alumisednupud.setPadding(new Insets(20, 50, 15, 50));
+        alumisednupud.setStyle("-fx-background-color: GREENYELLOW;");
         Button salvesta = new Button("Salvesta");
         salvesta.setOnAction(event1 -> {
-            WritableImage snapshot = peenrastik.getScene().snapshot(null);
-            File file = new File("chart.png");
-            try {
-                ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", file);
-            } catch (IOException e) {
-            }
-
+            AndmeKonvertija.salvestaPilt(peenrastik);
         });
         Button sulge = new Button("Sulge");
         sulge.setOnAction(event -> põllumaa.close());
@@ -123,7 +118,6 @@ public class Põld {
         return alumisednupud;
 
     }
-
 
 
 }

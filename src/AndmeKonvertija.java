@@ -1,14 +1,18 @@
 import com.sun.corba.se.spi.ior.ObjectKey;
 import com.sun.org.apache.xpath.internal.SourceTree;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import np.com.ngopal.control.AutoFillTextBox;
 
+import javax.imageio.ImageIO;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +60,15 @@ public class AndmeKonvertija { //klass erinevate abimeetoditega, peamiselt andme
         String tekstkastist = kast.getText();
         return tekstkastist;
 
+    }
+
+    public static void salvestaPilt(GridPane ala) {
+        WritableImage snapshot = ala.getScene().snapshot(null);
+        File file = new File("minupeenrad.png");
+        try {
+            ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", file);
+        } catch (IOException e) {
+        }
     }
 
 }

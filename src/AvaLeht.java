@@ -38,8 +38,8 @@ public class AvaLeht {
         TextField ridadeArv = new TextField("Sisesta ridade arv");
 
         //veatekstid
-        String ridurohkem = "Peenraid võiks ikka rohkem kui ridu olla";
-        String polenumber = "Nii peenarde arv kui read võiksid ikka numbrid olla";
+        String ridurohkem = "Peenraid võiks ikka rohkem kui ridu olla!";
+        String polenumber = "Sisesta palun numbrid!";
 
         //nupp, mis võtab kasutaja andmed ja nende põhjal loob uue põllu
         korjaAndmed = new Button("Hakka pihta");

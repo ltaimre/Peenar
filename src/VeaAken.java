@@ -4,6 +4,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 
@@ -21,6 +23,7 @@ public class VeaAken {
     private void looAken(String tekst) {
         String hoiatustekst = tekst;
         hoiatussilt = new Label(hoiatustekst);
+        hoiatussilt.setFont(Font.font("Verdana", 12));
         suleaken = new Button("Sain aru!");
         suleaken.setOnAction(event -> {
                     hoiatusaken.close();
@@ -30,6 +33,7 @@ public class VeaAken {
 
         StackPane aken = new StackPane();
         aken.setAlignment(suleaken, Pos.BOTTOM_CENTER);
+        aken.setStyle("-fx-background-color: GREENYELLOW;");
         Insets piirid = new Insets(10, 10, 10, 10);
         aken.setPadding(piirid);
         aken.getChildren().addAll(hoiatussilt, suleaken);

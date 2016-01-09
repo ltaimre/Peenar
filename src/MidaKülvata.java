@@ -21,7 +21,7 @@ public class MidaKülvata {
         looAken(parameetrid, väli, koht);
     }
 
-    public void looAken(double[] parameetrid, GridPane väli, int[] koht) throws Exception {
+    private void looAken(double[] parameetrid, GridPane väli, int[] koht) throws Exception {
         Stage külvamisaken = new Stage();
         Scene midakülvata;
 
